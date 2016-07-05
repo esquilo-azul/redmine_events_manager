@@ -15,7 +15,7 @@ module EventsManager
         module InstanceMethods
           def execute_with_trigger_event
             execute_without_trigger_event
-            EventsManager::EventManager.trigger(Repository, :receive, repository)
+            EventsManager.trigger(Repository, :receive, repository)
           end
         end
       end

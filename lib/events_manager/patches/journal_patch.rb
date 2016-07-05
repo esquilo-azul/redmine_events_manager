@@ -14,7 +14,7 @@ module EventsManager
       module InstanceMethods
         def journal_create_event
           return unless journalized_type == 'Issue'
-          EventsManager::EventManager.trigger(Issue, :update, self)
+          EventsManager.trigger(Issue, :update, self)
         end
       end
     end

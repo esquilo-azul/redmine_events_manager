@@ -14,11 +14,11 @@ module EventsManager
 
       module InstanceMethods
         def issue_relation_create_event
-          EventsManager::EventManager.trigger(IssueRelation, :create, self)
+          EventsManager.trigger(IssueRelation, :create, self)
         end
 
         def issue_relation_destroy_event
-          EventsManager::EventManager.trigger(IssueRelation, :delete, self)
+          EventsManager.trigger(IssueRelation, :delete, self)
         end
       end
     end

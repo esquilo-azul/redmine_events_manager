@@ -15,17 +15,17 @@ module EventsManager
 
       module InstanceMethods
         def time_entry_create_event
-          EventsManager::EventManager.trigger(TimeEntry, :create, self)
+          EventsManager.trigger(TimeEntry, :create, self)
         end
 
         def time_entry_destroy_event
-          EventsManager::EventManager.trigger(TimeEntry, :delete,
-                                              EventsManager::RemovedRecord.new(self))
+          EventsManager.trigger(TimeEntry, :delete,
+                                EventsManager::RemovedRecord.new(self))
         end
 
         def time_entry_update_event
-          EventsManager::EventManager.trigger(TimeEntry, :update,
-                                              EventsManager::UpdatedRecord.new(self))
+          EventsManager.trigger(TimeEntry, :update,
+                                EventsManager::UpdatedRecord.new(self))
         end
       end
     end

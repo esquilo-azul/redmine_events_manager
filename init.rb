@@ -7,6 +7,7 @@ require 'events_manager/patches/issue_relation_patch'
 require 'events_manager/patches/journal_patch'
 require 'events_manager/patches/time_entry_patch'
 require 'events_manager/patches/hooks/redmine_patch'
+require 'events_manager'
 
 Redmine::Plugin.register :events_manager do
   name 'Events Manager'
