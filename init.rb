@@ -14,4 +14,9 @@ Redmine::Plugin.register :events_manager do
   author 'Eduardo Henrique Bogoni'
   description 'Management for events'
   version '0.1.0'
+
+  Redmine::MenuManager.map :admin_menu do |menu|
+    menu.push :event_exceptions, { controller: 'event_exceptions', action: 'index', id: nil },
+              caption: :label_event_exception_plural
+  end
 end
