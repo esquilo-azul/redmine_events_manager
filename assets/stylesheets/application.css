@@ -1,0 +1,8 @@
+#top-menu .event-exception-unchecked {
+  background-image: url('../../../images/warning.png');
+  background-position: 0% 40%;
+  background-repeat: no-repeat;
+  padding-left: 20px;
+  padding-top: 2px;
+  padding-bottom: 3px;
+}

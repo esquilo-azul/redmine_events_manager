@@ -53,6 +53,7 @@ module EventsManager
     def on_listener_exception(event, listener, exception)
       Rails.logger.warn(exception)
       begin
+        EventsManager::Settings.event_exception_unchecked = true
         EventException.create!(event_exception_data(event, listener, exception))
       rescue => ex
         Rails.logger.warn(ex)

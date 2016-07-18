@@ -40,6 +40,7 @@ class EventExceptionTest < ActiveSupport::TestCase
     c = @event_exception_count_start
     EventsManager.trigger(DummyEntity, :create, DummyEntity.new(false))
     assert_equal c, EventException.count, EventException.last.inspect
+    assert_not EventsManager::Settings.event_exception_unchecked
   end
 
   test 'failed event should generate event exception' do
