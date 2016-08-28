@@ -1,6 +1,6 @@
 module EventsManager
   class << self
-    attr_accessor :delay_disabled
+    attr_accessor :delay_disabled, :log_exceptions_disabled
 
     EVENT_EXCEPTION_ATTRIBUTES = {
       event_entity: proc { |e, _l, _ex| e.entity.name },
@@ -51,6 +51,7 @@ module EventsManager
     end
 
     def on_listener_exception(event, listener, exception)
+      raise exception if log_exceptions_disabled
       Rails.logger.warn(exception)
       begin
         EventsManager::Settings.event_exception_unchecked = true
