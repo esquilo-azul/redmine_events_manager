@@ -32,6 +32,7 @@ end
 
 class EventExceptionTest < ActiveSupport::TestCase
   setup do
+    EventsManager.log_exceptions_disabled = false
     @event_exception_count_start = EventException.count
     EventsManager.add_listener(DummyEntity, :create, 'DummyListener')
   end
