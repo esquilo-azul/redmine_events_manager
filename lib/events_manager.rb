@@ -43,7 +43,8 @@ module EventsManager
       if delay_disabled
         run_listener(event, listener)
       else
-        delay.run_listener(event, listener)
+        delay(run_at: ::ListenerOption.listener_delay(listener.class).seconds.from_now)
+          .run_listener(event, listener)
       end
     end
 
