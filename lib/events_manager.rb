@@ -15,7 +15,7 @@ module EventsManager
 
     def add_listener(entity, action, listener)
       return if listeners(entity, action).include?(listener)
-      listeners(entity, action) << listener
+      listeners(entity, action) << listener.to_s
     end
 
     def trigger(entity, action, data)
@@ -25,6 +25,16 @@ module EventsManager
         Rails.logger.debug("Listener found: #{l}")
         run_delayed_listener(event, l.constantize.new(event))
       end
+    end
+
+    def all_listeners
+      r = []
+      @listeners.values.each do |e|
+        e.values.each do |a|
+          r += a
+        end
+      end
+      r.uniq
     end
 
     private

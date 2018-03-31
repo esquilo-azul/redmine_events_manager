@@ -5,4 +5,5 @@ RedmineApp::Application.routes.draw do
       get :download
     end
   end
+  resources(:listener_options) { as_routes }
 end
