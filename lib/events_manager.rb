@@ -40,6 +40,7 @@ module EventsManager
     private
 
     def run_delayed_listener(event, listener)
+      return unless ::ListenerOption.listener_enabled?(listener.class)
       if delay_disabled
         run_listener(event, listener)
       else

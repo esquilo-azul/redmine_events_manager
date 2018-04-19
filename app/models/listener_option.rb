@@ -1,5 +1,6 @@
 class ListenerOption < ActiveRecord::Base
   DEFAULT_DELAY = 0
+  DEFAULT_ENABLED = true
 
   class << self
     def listener_class_list
@@ -13,6 +14,17 @@ class ListenerOption < ActiveRecord::Base
     def listener_delay(listener_class)
       o = ::ListenerOption.where(listener_class: listener_class).first
       o && o.delay.present? && o.delay >= 0 ? o.delay : DEFAULT_DELAY
+    end
+
+    def listener_enabled?(listener_class)
+      o = ::ListenerOption.where(listener_class: listener_class).first
+      o.present? ? o.enabled? : DEFAULT_ENABLED
+    end
+
+    def listener_enable(listener_class, enabled)
+      o = ::ListenerOption.find_or_create_by(listener_class: listener_class)
+      o.enabled = enabled
+      o.save!
     end
   end
 
