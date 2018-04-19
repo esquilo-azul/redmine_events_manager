@@ -15,7 +15,7 @@ Redmine::Plugin.register :events_manager do
   name 'Events Manager'
   author 'Eduardo Henrique Bogoni'
   description 'Management for events'
-  version '0.2.0'
+  version '0.3.0'
 
   settings default: { event_exception_unchecked: false }
 
