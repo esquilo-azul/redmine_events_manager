@@ -11,7 +11,7 @@ require 'events_manager/patches/repository/git_patch'
 require 'events_manager'
 require_dependency 'events_manager/hooks/add_assets'
 
-Redmine::Plugin.register :events_manager do
+Redmine::Plugin.register :redmine_events_manager do
   name 'Events Manager'
   author 'Eduardo Henrique Bogoni'
   description 'Management for events'
