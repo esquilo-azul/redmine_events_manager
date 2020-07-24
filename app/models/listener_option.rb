@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 class ListenerOption < ActiveRecord::Base
   DEFAULT_DELAY = 0
   DEFAULT_ENABLED = true
 
   class << self
     def listener_class_list
-      @listener_classes ||= ::EventsManager.all_listeners
+      @listener_class_list ||= ::EventsManager.all_listeners
     end
 
     def listener_class_options

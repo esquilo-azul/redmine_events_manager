@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :events_manager do
   namespace :events do
     namespace :issue_relation do

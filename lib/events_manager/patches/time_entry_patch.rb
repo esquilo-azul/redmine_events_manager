@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module EventsManager
   module Patches
     module TimeEntryPatch
@@ -33,5 +35,5 @@ module EventsManager
 end
 
 unless TimeEntry.included_modules.include? EventsManager::Patches::TimeEntryPatch
-  TimeEntry.send(:include, EventsManager::Patches::TimeEntryPatch)
+  TimeEntry.include EventsManager::Patches::TimeEntryPatch
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateListenerOptions < ActiveRecord::Migration
   def change
     create_table :listener_options do |t|

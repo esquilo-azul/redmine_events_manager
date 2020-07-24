@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module EventsManager
   class Event
     attr_reader :entity, :action, :data

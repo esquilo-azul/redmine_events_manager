@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class DummyListener
@@ -53,10 +55,10 @@ class EventExceptionTest < ActiveSupport::TestCase
     assert ee
     assert_equal 'DummyEntity', ee.event_entity, 'event_entity'
     assert_equal 'create', ee.event_action, 'event_action'
-    assert_equal <<EOS, ee.event_data, 'event_data'
---- !ruby/object:DummyEntity
-failed: true
-EOS
+    assert_equal <<~DATA_CONTENT, ee.event_data, 'event_data'
+      --- !ruby/object:DummyEntity
+      failed: true
+    DATA_CONTENT
     assert_equal 'DummyListener', ee.listener_class, 'listener_class'
     assert_equal 'dummy_listener_instance', ee.listener_instance, 'listener_instance'
     assert_equal 'RuntimeError', ee.exception_class, 'exception_class'

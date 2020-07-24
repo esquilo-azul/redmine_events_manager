@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module EventsManager
   module Patches
     module IssueRelationPatch
@@ -26,5 +28,5 @@ module EventsManager
 end
 
 unless IssueRelation.included_modules.include? EventsManager::Patches::IssueRelationPatch
-  IssueRelation.send(:include, EventsManager::Patches::IssueRelationPatch)
+  IssueRelation.include EventsManager::Patches::IssueRelationPatch
 end

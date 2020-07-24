@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module EventsManager
   module Patches
     module JournalPatch
@@ -14,6 +16,7 @@ module EventsManager
       module InstanceMethods
         def journal_create_event
           return unless journalized_type == 'Issue'
+
           EventsManager.trigger(Issue, :update, self)
         end
       end
@@ -22,5 +25,5 @@ module EventsManager
 end
 
 unless Journal.included_modules.include? EventsManager::Patches::JournalPatch
-  Journal.send(:include, EventsManager::Patches::JournalPatch)
+  Journal.include EventsManager::Patches::JournalPatch
 end

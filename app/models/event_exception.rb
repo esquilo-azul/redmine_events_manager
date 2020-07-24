@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class EventException < ActiveRecord::Base
   self.inheritance_column = nil
 

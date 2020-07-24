@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class EventExceptionsController < ApplicationController
   before_action :require_admin
   layout 'admin'
@@ -5,7 +7,7 @@ class EventExceptionsController < ApplicationController
 
   active_scaffold :event_exception do |conf|
     conf.actions.exclude :create, :update, :delete
-    conf.list.columns = [:created_at, :event_entity, :event_action, :listener_class]
+    conf.list.columns = %i[created_at event_entity event_action listener_class]
     conf.list.sorting = { created_at: :desc }
     conf.action_links.add :download, type: :member, label: 'Download', page: true
   end
@@ -17,8 +19,8 @@ class EventExceptionsController < ApplicationController
 
   private
 
-  def download_filename(ex)
-    [Setting.host_name, 'exception', ex.id.to_s, ex.created_at.to_s].map do |s|
+  def download_filename(error)
+    [Setting.host_name, 'exception', error.id.to_s, error.created_at.to_s].map do |s|
       s.parameterize.strip
     end.select(&:present?).join('_')
   end

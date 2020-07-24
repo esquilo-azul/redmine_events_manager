@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class EventsManagerTest < ActiveSupport::TestCase
@@ -15,7 +17,7 @@ class EventsManagerTest < ActiveSupport::TestCase
   test 'all listeners' do
     y = ::EventsManager.all_listeners
     assert y.is_a?(Array)
-    assert y.count > 0
+    assert y.count.positive?
     y.each { |l| assert l.is_a?(String), "#{l}|#{l.class}" }
     assert_equal y.count, y.uniq.count
   end

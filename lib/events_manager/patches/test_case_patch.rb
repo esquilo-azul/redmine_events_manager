@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module EventsManager
   module Patches
     module TestCasePatch
@@ -15,6 +17,6 @@ end
 if Rails.env.test?
   require Rails.root.join('test', 'test_helper.rb')
   unless ::ActiveSupport::TestCase.included_modules.include? EventsManager::Patches::TestCasePatch
-    ::ActiveSupport::TestCase.send(:include, EventsManager::Patches::TestCasePatch)
+    ::ActiveSupport::TestCase.include EventsManager::Patches::TestCasePatch
   end
 end

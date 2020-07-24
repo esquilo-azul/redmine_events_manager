@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module EventsManager
   class << self
     attr_accessor :delay_disabled, :log_exceptions_disabled
@@ -15,6 +17,7 @@ module EventsManager
 
     def add_listener(entity, action, listener)
       return if listeners(entity, action).include?(listener)
+
       listeners(entity, action) << listener.to_s
     end
 
@@ -29,8 +32,8 @@ module EventsManager
 
     def all_listeners
       r = []
-      @listeners.values.each do |e|
-        e.values.each do |a|
+      @listeners.each_value do |e|
+        e.each_value do |a|
           r += a
         end
       end
@@ -41,6 +44,7 @@ module EventsManager
 
     def run_delayed_listener(event, listener)
       return unless ::ListenerOption.listener_enabled?(listener.class)
+
       if delay_disabled
         run_listener(event, listener)
       else
@@ -55,8 +59,8 @@ module EventsManager
         Rails.logger.info("Running listener: #{listener}")
         I18n.locale = Setting.default_language
         listener.run
-      rescue => ex
-        on_listener_exception(event, listener, ex)
+      rescue StandardError => e
+        on_listener_exception(event, listener, e)
       ensure
         I18n.locale = previous_locale
       end
@@ -64,12 +68,13 @@ module EventsManager
 
     def on_listener_exception(event, listener, exception)
       raise exception if log_exceptions_disabled
+
       Rails.logger.warn(exception)
       begin
         EventsManager::Settings.event_exception_unchecked = true
         EventException.create!(event_exception_data(event, listener, exception))
-      rescue => ex
-        Rails.logger.warn(ex)
+      rescue StandardError => e
+        Rails.logger.warn(e)
       end
     end
 
@@ -78,8 +83,8 @@ module EventsManager
       EVENT_EXCEPTION_ATTRIBUTES.each do |a, p|
         data[a] = begin
           p.call(event, listener, exception)
-        rescue => ex
-          ex.to_s
+                  rescue StandardError => e
+                    e.to_s
         end
       end
       data

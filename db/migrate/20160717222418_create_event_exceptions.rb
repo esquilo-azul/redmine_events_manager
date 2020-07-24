@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateEventExceptions < ActiveRecord::Migration
   def change
     create_table :event_exceptions do |t|
