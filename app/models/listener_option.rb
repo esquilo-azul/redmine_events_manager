@@ -14,17 +14,17 @@ class ListenerOption < ActiveRecord::Base
     end
 
     def listener_delay(listener_class)
-      o = ::ListenerOption.find_by(listener_class: listener_class.name)
+      o = ::ListenerOption.find_by(listener_class: listener_class.to_s)
       o && o.delay.present? && o.delay >= 0 ? o.delay : DEFAULT_DELAY
     end
 
     def listener_enabled?(listener_class)
-      o = ::ListenerOption.find_by(listener_class: listener_class.name)
+      o = ::ListenerOption.find_by(listener_class: listener_class.to_s)
       o.present? ? o.enabled? : DEFAULT_ENABLED
     end
 
     def listener_enable(listener_class, enabled)
-      o = ::ListenerOption.find_or_create_by(listener_class: listener_class.name)
+      o = ::ListenerOption.find_or_create_by(listener_class: listener_class.to_s)
       o.enabled = enabled
       o.save!
     end
