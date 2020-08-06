@@ -15,7 +15,6 @@ module EventsManager
 end
 
 if Rails.env.test?
-  require Rails.root.join('test', 'test_helper.rb')
   unless ::ActiveSupport::TestCase.included_modules.include? EventsManager::Patches::TestCasePatch
     ::ActiveSupport::TestCase.include EventsManager::Patches::TestCasePatch
   end
