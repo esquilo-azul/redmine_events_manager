@@ -10,12 +10,13 @@ require 'events_manager/patches/time_entry_patch'
 require 'events_manager/patches/repository/git_patch'
 require 'events_manager'
 require_dependency 'events_manager/hooks/add_assets'
+require_dependency 'redmine_events_manager/version'
 
 Redmine::Plugin.register :redmine_events_manager do
   name 'Events Manager'
-  author 'Eduardo Henrique Bogoni'
-  description 'Management for events'
-  version '0.4.7'
+  author ::RedmineEventsManager::AUTHOR
+  description ::RedmineEventsManager::SUMMARY
+  version ::RedmineEventsManager::VERSION
 
   settings default: { event_exception_unchecked: false }
 
