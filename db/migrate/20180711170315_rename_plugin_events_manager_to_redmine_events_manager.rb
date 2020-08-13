@@ -18,15 +18,15 @@ class RenamePluginEventsManagerToRedmineEventsManager < (
 
   def rename_plugin(from, to)
     old_record = Setting.find_by(name: from)
-    return unless old_record.present?
+    return if old_record.blank?
 
     new_record = Setting.find_by(name: to)
     if new_record.present?
       new_value = plugin_setting_value(old_record).value.merge(plugin_setting_value(new_record))
-      new_record.update_attributes!(value: new_value)
+      new_record.update!(value: new_value)
       old_record.destroy!
     else
-      old_record.update_attributes!(name: to)
+      old_record.update!(name: to)
     end
   end
 

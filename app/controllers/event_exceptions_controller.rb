@@ -3,7 +3,7 @@
 class EventExceptionsController < ApplicationController
   before_action :require_admin
   layout 'admin'
-  before_action :clear_event_exception_unchecked, only: :index
+  before_action :clear_event_exception_unchecked, only: :index # rubocop:disable Rails/LexicallyScopedActionFilter
 
   active_scaffold :event_exception do |conf|
     conf.actions.exclude :create, :update, :delete
