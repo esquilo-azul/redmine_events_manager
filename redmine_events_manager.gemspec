@@ -18,4 +18,7 @@ Gem::Specification.new do |s|
   s.test_files = `git ls-files spec test`.split("\n")
 
   s.add_dependency 'delayed_job_active_record'
+
+  # Test/development gems
+  s.add_development_dependency 'eac_ruby_gem_support', '~> 0.1', '>= 0.1.2'
 end
