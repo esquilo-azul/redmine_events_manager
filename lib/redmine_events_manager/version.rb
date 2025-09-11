@@ -5,4 +5,7 @@ module RedmineEventsManager
   HOMEPAGE = 'https://github.com/esquilo-azul/redmine_events_manager'
   SUMMARY = 'Management for events'
   VERSION = '0.4.14'
+
+  module Version
+  end
 end
