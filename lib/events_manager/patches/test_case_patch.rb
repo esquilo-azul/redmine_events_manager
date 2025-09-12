@@ -10,8 +10,6 @@ module EventsManager
   end
 end
 
-if Rails.env.test?
-  unless ::ActiveSupport::TestCase.included_modules.include? EventsManager::Patches::TestCasePatch
-    ::ActiveSupport::TestCase.include EventsManager::Patches::TestCasePatch
-  end
+if Rails.env.test? && !::ActiveSupport::TestCase.included_modules.include?(EventsManager::Patches::TestCasePatch)
+  ::ActiveSupport::TestCase.include EventsManager::Patches::TestCasePatch
 end

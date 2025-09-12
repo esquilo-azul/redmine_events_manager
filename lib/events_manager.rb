@@ -83,8 +83,8 @@ module EventsManager
       EVENT_EXCEPTION_ATTRIBUTES.each do |a, p|
         data[a] = begin
           p.call(event, listener, exception)
-                  rescue StandardError => e
-                    e.to_s
+        rescue StandardError => e
+          e.to_s
         end
       end
       data
