@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'redmine'
-require_dependency 'redmine_events_manager/version'
+require 'redmine_events_manager/version'
 
 Redmine::Plugin.register :redmine_events_manager do
   name 'Events Manager'
