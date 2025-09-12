@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe(::EventsManager) do # rubocop:disable Style/RedundantConstantBase
+RSpec.describe(::RedmineEventsManager) do # rubocop:disable Style/RedundantConstantBase
   let(:stub_entity_class) { ::Class.new } # rubocop:disable Style/RedundantConstantBase
   let(:stub_listener_class) { ::Class.new } # rubocop:disable Style/RedundantConstantBase
 

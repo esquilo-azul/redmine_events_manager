@@ -16,17 +16,17 @@ module RedmineEventsManager
 
       module InstanceMethods
         def issue_relation_create_event
-          EventsManager.trigger(IssueRelation, :create, self)
+          RedmineEventsManager.trigger(IssueRelation, :create, self)
         end
 
         def issue_relation_destroy_event
-          EventsManager.trigger(IssueRelation, :delete, self)
+          RedmineEventsManager.trigger(IssueRelation, :delete, self)
         end
       end
     end
   end
 end
 
-unless IssueRelation.included_modules.include? EventsManager::Patches::IssueRelationPatch
-  IssueRelation.include EventsManager::Patches::IssueRelationPatch
+unless IssueRelation.included_modules.include? RedmineEventsManager::Patches::IssueRelationPatch
+  IssueRelation.include RedmineEventsManager::Patches::IssueRelationPatch
 end

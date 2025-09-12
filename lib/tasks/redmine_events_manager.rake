@@ -8,7 +8,7 @@ namespace :redmine_events_manager do # rubocop:disable Metrics/BlockLength
     namespace :issue_relation do
       desc 'Envia notificações da criação de um IssueRelation'
       task :create, [:issue_relation_id] => :environment do |_t, args|
-        EventsManager.trigger(
+        RedmineEventsManager.trigger(
           IssueRelation,
           :create,
           IssueRelation.find(args.issue_relation_id)
@@ -18,7 +18,7 @@ namespace :redmine_events_manager do # rubocop:disable Metrics/BlockLength
     namespace :issue do
       desc 'Envia notificações da criação de um Issue'
       task :create, [:issue_id] => :environment do |_t, args|
-        EventsManager.trigger(
+        RedmineEventsManager.trigger(
           Issue,
           :create,
           Issue.find(args.issue_id)
@@ -27,7 +27,7 @@ namespace :redmine_events_manager do # rubocop:disable Metrics/BlockLength
 
       desc 'Envia notificações da alteração de um Issue'
       task :update, [:journal_id] => :environment do |_t, args|
-        EventsManager.trigger(
+        RedmineEventsManager.trigger(
           Issue,
           :update,
           Journal.find(args.journal_id)
@@ -37,8 +37,8 @@ namespace :redmine_events_manager do # rubocop:disable Metrics/BlockLength
     namespace :repository do
       desc 'Ativa evento de recebimento de conteúdo por repositório'
       task :receive, [:repository_id] => :environment do |_t, args|
-        EventsManager.delay_disabled = true
-        EventsManager.trigger(
+        RedmineEventsManager.delay_disabled = true
+        RedmineEventsManager.trigger(
           Repository,
           :receive,
           Repository.find(args.repository_id)

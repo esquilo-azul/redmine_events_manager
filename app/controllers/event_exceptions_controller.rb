@@ -26,7 +26,7 @@ class EventExceptionsController < ApplicationController
   end
 
   def clear_event_exception_unchecked
-    EventsManager::Settings.event_exception_unchecked = false if
-    EventsManager::Settings.event_exception_unchecked
+    RedmineEventsManager::Settings.event_exception_unchecked = false if
+    RedmineEventsManager::Settings.event_exception_unchecked
   end
 end

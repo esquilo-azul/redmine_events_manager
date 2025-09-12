@@ -34,28 +34,28 @@ RSpec.describe EventException do
   let(:event_exception_count_start) { described_class.count }
 
   before do
-    EventsManager.log_exceptions_disabled = false
+    RedmineEventsManager.log_exceptions_disabled = false
     event_exception_count_start
-    EventsManager.add_listener(DummyEntity, :create, 'DummyListener')
+    RedmineEventsManager.add_listener(DummyEntity, :create, 'DummyListener')
   end
 
   context 'when event triggered is successful' do
     before do
-      EventsManager.trigger(DummyEntity, :create, DummyEntity.new(false))
+      RedmineEventsManager.trigger(DummyEntity, :create, DummyEntity.new(false))
     end
 
     it 'successful event should not generate event exception' do
       expect(described_class.count).to eq(event_exception_count_start)
     end
 
-    it { expect(EventsManager::Settings.event_exception_unchecked).to be_falsy }
+    it { expect(RedmineEventsManager::Settings.event_exception_unchecked).to be_falsy }
   end
 
   context 'when event triggered is fail' do
     let(:ee) { described_class.last }
 
     before do
-      EventsManager.trigger(DummyEntity, :create, DummyEntity.new(true))
+      RedmineEventsManager.trigger(DummyEntity, :create, DummyEntity.new(true))
     end
 
     it 'failed event should generate event exception' do
@@ -74,6 +74,6 @@ RSpec.describe EventException do
     it { expect(ee.exception_class).to eq('RuntimeError') }
     it { expect(ee.exception_message).to eq('Dummy failed!') }
     it { expect(ee.exception_stack).to be_present }
-    it { expect(EventsManager::Settings.event_exception_unchecked).to be_truthy }
+    it { expect(RedmineEventsManager::Settings.event_exception_unchecked).to be_truthy }
   end
 end

@@ -17,13 +17,13 @@ module RedmineEventsManager
         def journal_create_event
           return unless journalized_type == 'Issue'
 
-          EventsManager.trigger(Issue, :update, self)
+          RedmineEventsManager.trigger(Issue, :update, self)
         end
       end
     end
   end
 end
 
-unless Journal.included_modules.include? EventsManager::Patches::JournalPatch
-  Journal.include EventsManager::Patches::JournalPatch
+unless Journal.included_modules.include? RedmineEventsManager::Patches::JournalPatch
+  Journal.include RedmineEventsManager::Patches::JournalPatch
 end

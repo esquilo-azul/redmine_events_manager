@@ -6,7 +6,7 @@ class ListenerOption < ActiveRecord::Base
 
   class << self
     def listener_class_list
-      @listener_class_list ||= ::EventsManager.all_listeners
+      @listener_class_list ||= ::RedmineEventsManager.all_listeners
     end
 
     def listener_class_options

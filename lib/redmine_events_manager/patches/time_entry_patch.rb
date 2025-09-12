@@ -17,23 +17,23 @@ module RedmineEventsManager
 
       module InstanceMethods
         def time_entry_create_event
-          EventsManager.trigger(TimeEntry, :create, self)
+          RedmineEventsManager.trigger(TimeEntry, :create, self)
         end
 
         def time_entry_destroy_event
-          EventsManager.trigger(TimeEntry, :delete,
-                                EventsManager::RemovedRecord.new(self))
+          RedmineEventsManager.trigger(TimeEntry, :delete,
+                                       RedmineEventsManager::RemovedRecord.new(self))
         end
 
         def time_entry_update_event
-          EventsManager.trigger(TimeEntry, :update,
-                                EventsManager::UpdatedRecord.new(self))
+          RedmineEventsManager.trigger(TimeEntry, :update,
+                                       RedmineEventsManager::UpdatedRecord.new(self))
         end
       end
     end
   end
 end
 
-unless TimeEntry.included_modules.include? EventsManager::Patches::TimeEntryPatch
-  TimeEntry.include EventsManager::Patches::TimeEntryPatch
+unless TimeEntry.included_modules.include? RedmineEventsManager::Patches::TimeEntryPatch
+  TimeEntry.include RedmineEventsManager::Patches::TimeEntryPatch
 end

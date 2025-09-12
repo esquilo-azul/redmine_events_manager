@@ -22,7 +22,7 @@ Redmine::Plugin.register :redmine_events_manager do
     menu.push :event_exception_unchecked,
               { controller: 'event_exceptions', action: 'index', id: nil },
               caption: '', last: true, if: proc {
-                User.current.admin? && EventsManager::Settings.event_exception_unchecked
+                User.current.admin? && RedmineEventsManager::Settings.event_exception_unchecked
               }
   end
 end

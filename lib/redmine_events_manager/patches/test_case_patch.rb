@@ -11,6 +11,6 @@ module RedmineEventsManager
 end
 
 if Rails.env.test? && ::ActiveSupport::TestCase # rubocop:disable Style/RedundantConstantBase
-                        .included_modules.exclude?(EventsManager::Patches::TestCasePatch)
-  ActiveSupport::TestCase.include EventsManager::Patches::TestCasePatch # rubocop:disable Rails/ActiveSupportOnLoad
+                        .included_modules.exclude?(RedmineEventsManager::Patches::TestCasePatch)
+  ActiveSupport::TestCase.include RedmineEventsManager::Patches::TestCasePatch # rubocop:disable Rails/ActiveSupportOnLoad
 end
