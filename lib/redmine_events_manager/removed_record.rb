@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module EventsManager
+module RedmineEventsManager
   class RemovedRecord
     def initialize(record)
       @attributes = record.attributes

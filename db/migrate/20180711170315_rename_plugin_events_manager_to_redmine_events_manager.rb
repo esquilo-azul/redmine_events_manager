@@ -7,11 +7,11 @@ class RenamePluginEventsManagerToRedmineEventsManager < (
   end
 
   def up
-    rename_plugin('events_manager', 'redmine_events_manager')
+    rename_plugin('redmine_events_manager', 'redmine_events_manager')
   end
 
   def down
-    rename_plugin('redmine_events_manager', 'events_manager')
+    rename_plugin('redmine_events_manager', 'redmine_events_manager')
   end
 
   private

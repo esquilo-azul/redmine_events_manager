@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module EventsManager
+module RedmineEventsManager
   module Patches
     module IssueRelationPatch
       def self.included(base)

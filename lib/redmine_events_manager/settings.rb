@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module EventsManager
+module RedmineEventsManager
   class Settings
     class << self
       def event_exception_unchecked=(value)

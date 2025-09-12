@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module EventsManager
+module RedmineEventsManager
   module Hooks
     class AddAssets < Redmine::Hook::ViewListener
       def view_layouts_base_html_head(_context = {})
