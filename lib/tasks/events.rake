@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-namespace :events_manager do
-  namespace :events do
+namespace :events_manager do # rubocop:disable Metrics/BlockLength
+  namespace :events do # rubocop:disable Metrics/BlockLength
     namespace :issue_relation do
       desc 'Envia notificações da criação de um IssueRelation'
       task :create, [:issue_relation_id] => :environment do |_t, args|

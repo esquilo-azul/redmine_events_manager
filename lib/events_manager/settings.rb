@@ -9,7 +9,7 @@ module EventsManager
         Setting.plugin_redmine_events_manager = s
       end
 
-      def event_exception_unchecked
+      def event_exception_unchecked # rubocop:disable Naming/PredicateMethod
         Setting.plugin_redmine_events_manager[:event_exception_unchecked] ? true : false
       end
     end

@@ -22,7 +22,7 @@ class EventExceptionsController < ApplicationController
   def download_filename(error)
     [Setting.host_name, 'exception', error.id.to_s, error.created_at.to_s].map do |s|
       s.parameterize.strip
-    end.select(&:present?).join('_')
+    end.select(&:present?).join('_') # rubocop:disable Rails/CompactBlank
   end
 
   def clear_event_exception_unchecked

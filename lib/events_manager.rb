@@ -23,9 +23,9 @@ module EventsManager
 
     def trigger(entity, action, data)
       event = EventsManager::Event.new(entity, action, data)
-      Rails.logger.debug("Event triggered: #{event}")
+      Rails.logger.debug("Event triggered: #{event}") # rubocop:disable Rails/EagerEvaluationLogMessage
       listeners(entity, action).each do |l|
-        Rails.logger.debug("Listener found: #{l}")
+        Rails.logger.debug("Listener found: #{l}") # rubocop:disable Rails/EagerEvaluationLogMessage
         run_delayed_listener(event, l.constantize.new(event))
       end
     end

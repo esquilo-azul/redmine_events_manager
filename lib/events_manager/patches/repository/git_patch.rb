@@ -13,6 +13,6 @@ module EventsManager
   end
 end
 
-unless ::Repository::Git.included_modules.include?(EventsManager::Patches::Repository::GitPatch)
-  ::Repository::Git.prepend(EventsManager::Patches::Repository::GitPatch)
+unless ::Repository::Git.included_modules.include?(EventsManager::Patches::Repository::GitPatch) # rubocop:disable Style/RedundantConstantBase
+  ::Repository::Git.prepend(EventsManager::Patches::Repository::GitPatch) # rubocop:disable Style/RedundantConstantBase
 end

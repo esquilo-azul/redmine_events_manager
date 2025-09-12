@@ -7,7 +7,7 @@ RSpec.describe EventExceptionsController, type: :feature do
     end
 
     it { expect(EventsManager::Settings.event_exception_unchecked).to be_truthy }
-    it { expect(::User.current.login).to eq('admin') }
+    it { expect(::User.current.login).to eq('admin') } # rubocop:disable Style/RedundantConstantBase
 
     context 'when index is accessed' do
       before { visit '/event_exceptions' }

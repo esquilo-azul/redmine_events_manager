@@ -30,7 +30,7 @@ class ListenerOption < ActiveRecord::Base
     end
   end
 
-  validates :listener_class, presence: true, uniqueness: true,
+  validates :listener_class, presence: true, uniqueness: true, # rubocop:disable Rails/UniqueValidationWithoutIndex
                              inclusion: { in: listener_class_list }
   validates :delay, allow_blank: true,
                     numericality: { integer_only: true }
