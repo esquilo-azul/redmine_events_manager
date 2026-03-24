@@ -13,7 +13,6 @@ module RedmineEventsManager
   end
 end
 
-unless Repository::Git.included_modules
-         .include?(RedmineEventsManager::Patches::Repository::GitPatch)
+unless Repository::Git.include?(RedmineEventsManager::Patches::Repository::GitPatch)
   ::Repository::Git.prepend(RedmineEventsManager::Patches::Repository::GitPatch) # rubocop:disable Style/RedundantConstantBase
 end

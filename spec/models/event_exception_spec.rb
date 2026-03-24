@@ -14,7 +14,7 @@ class DummyListener
   end
 end
 
-class DummyEntity
+class DummyEntity # rubocop:disable Style/OneClassPerFile
   attr_reader :failed
 
   def initialize(failed)

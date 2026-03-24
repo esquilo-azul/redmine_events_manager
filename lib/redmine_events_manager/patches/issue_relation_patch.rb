@@ -27,6 +27,6 @@ module RedmineEventsManager
   end
 end
 
-unless IssueRelation.included_modules.include? RedmineEventsManager::Patches::IssueRelationPatch
+unless IssueRelation.include?(RedmineEventsManager::Patches::IssueRelationPatch)
   IssueRelation.include RedmineEventsManager::Patches::IssueRelationPatch
 end

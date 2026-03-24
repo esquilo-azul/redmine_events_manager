@@ -34,6 +34,6 @@ module RedmineEventsManager
   end
 end
 
-unless TimeEntry.included_modules.include? RedmineEventsManager::Patches::TimeEntryPatch
+unless TimeEntry.include?(RedmineEventsManager::Patches::TimeEntryPatch)
   TimeEntry.include RedmineEventsManager::Patches::TimeEntryPatch
 end

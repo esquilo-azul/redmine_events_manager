@@ -24,6 +24,6 @@ module RedmineEventsManager
   end
 end
 
-unless Journal.included_modules.include? RedmineEventsManager::Patches::JournalPatch
+unless Journal.include?(RedmineEventsManager::Patches::JournalPatch)
   Journal.include RedmineEventsManager::Patches::JournalPatch
 end
