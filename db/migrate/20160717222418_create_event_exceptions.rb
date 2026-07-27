@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class CreateEventExceptions < (
-    Rails.version < '5.2' ? ActiveRecord::Migration : ActiveRecord::Migration[4.2]
-  )
+  Rails.version < '5.2' ? ActiveRecord::Migration : ActiveRecord::Migration[4.2]
+)
   def change # rubocop:disable Metrics/MethodLength
     create_table :event_exceptions do |t|
       t.string :event_entity

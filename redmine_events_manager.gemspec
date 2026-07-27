@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.require_paths = ['lib']
   s.files = `git ls-files`.split("\n")
   s.test_files = `git ls-files spec test`.split("\n") # rubocop:disable Gemspec/DeprecatedAttributeAssignment
-  s.required_ruby_version = '>= 2.7'
+  s.required_ruby_version = '>= 3.2'
 
   s.add_dependency 'delayed_job_active_record', '~> 4.1', '>= 4.1.11'
 
