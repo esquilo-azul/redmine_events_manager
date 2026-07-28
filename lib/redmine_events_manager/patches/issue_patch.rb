@@ -7,8 +7,6 @@ module RedmineEventsManager
         base.send(:include, InstanceMethods)
 
         base.class_eval do
-          unloadable
-
           after_create :issue_create_event
           after_destroy :issue_destroy_event
         end

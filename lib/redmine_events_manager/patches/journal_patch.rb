@@ -7,8 +7,6 @@ module RedmineEventsManager
         base.send(:include, InstanceMethods)
 
         base.class_eval do
-          unloadable
-
           after_create :journal_create_event
         end
       end
