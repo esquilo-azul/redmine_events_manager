@@ -21,5 +21,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'delayed_job_active_record', '~> 4.1', '>= 4.1.11'
 
   # Test/development gems
-  s.add_development_dependency 'eac_rails_gem_support', '~> 0.13', '>= 0.13.1'
+  s.add_development_dependency 'eac_rails_gem_support', '~> 0.13', '>= 0.13.2'
 end
