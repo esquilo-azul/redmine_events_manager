@@ -2,7 +2,7 @@
 
 class ListenerOptionsController < ApplicationController
   before_action :require_admin
-  layout 'admin'
+  layout 'nonproject_modules'
 
   active_scaffold :listener_option do |conf|
     conf.columns[:listener_class].form_ui = :select

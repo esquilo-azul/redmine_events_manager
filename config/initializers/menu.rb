@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-Redmine::MenuManager.map :admin_menu do |menu|
+Redmine::Plugin.by_path(__FILE__).nonprojects_menu do |menu|
   menu.push :event_exceptions, { controller: 'event_exceptions', action: 'index', id: nil },
             caption: :label_event_exception_plural
   menu.push :listener_options, { controller: 'listener_options', action: 'index', id: nil },

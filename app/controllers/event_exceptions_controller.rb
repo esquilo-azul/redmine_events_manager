@@ -2,7 +2,7 @@
 
 class EventExceptionsController < ApplicationController
   before_action :require_admin
-  layout 'admin'
+  layout 'nonproject_modules'
   before_action :clear_event_exception_unchecked, only: :index # rubocop:disable Rails/LexicallyScopedActionFilter
 
   active_scaffold :event_exception do |conf|

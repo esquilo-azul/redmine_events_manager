@@ -5,3 +5,4 @@ en:
         delay: Delay in seconds for the listener to be processed.
   label_event_exception_plural: Event exceptions
   label_listener_option_plural: Listener options
+  menu_redmine_events_manager: Events

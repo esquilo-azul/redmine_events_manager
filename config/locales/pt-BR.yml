@@ -5,3 +5,4 @@ pt-BR:
         delay: Atraso em segundos para o listener ser processado.
   label_event_exception_plural: Exceções em eventos
   label_listener_option_plural: Opções de listeners
+  menu_redmine_events_manager: Eventos
