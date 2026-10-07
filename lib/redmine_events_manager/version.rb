@@ -4,7 +4,7 @@ module RedmineEventsManager
   AUTHOR = 'Eduardo Henrique Bogoni'
   HOMEPAGE = 'https://github.com/esquilo-azul/redmine_events_manager'
   SUMMARY = 'Management for events'
-  VERSION = '0.5.4'
+  VERSION = '0.6.0'
 
   module Version
   end
